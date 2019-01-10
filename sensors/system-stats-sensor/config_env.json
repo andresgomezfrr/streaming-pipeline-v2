@@ -1,0 +1,38 @@
+{
+  "conf": {
+    "debug": 3,
+    "stdout": 1,
+    "syslog": 0,
+    "threads": 1,
+    "timeout": 40,
+    "max_snmp_fails": 2,
+    "max_kafka_fails": 2,
+    "sleep_main_thread": 5,
+    "sleep_worker_thread": 5,
+    "http_endpoint": "http://${HTTP_ENDPOINT}/",
+    "http_max_total_connections":4,
+    "http_timeout": 10000,
+    "http_connttimeout": 3000,
+    "http_verbose": 0,
+    "rb_http_max_messages":512
+  },
+  "sensors":
+  [
+    {
+      "timeout":5,
+      "sensor_name": "${SENSOR_NAME}",
+      "sensor_ip": "${SENSOR_IP}",
+      "snmp_version": "2c",
+      "community":"public",
+      "monitors":
+      [
+          {"name": "used_memory"  , "system": "free -m | grep Mem | awk '{print $3}'", "unit": "mbytes"},
+          {"name": "available_memory"  , "system": "free -m | grep Mem | awk '{print $7}'", "unit": "mbytes"},
+          {"name": "load_1"  , "system": "uptime | awk '{print $8}' | sed '$ s/.$//'", "unit": "load"},
+          {"name": "load_5"  , "system": "uptime | awk '{print $9}' | sed '$ s/.$//'", "unit": "load"},
+          {"name": "load_15"  , "system": "uptime | awk '{print $10}'", "unit": "load"},
+          {"name": "disk_used"  , "system": "df -h |grep none | awk '{print $5}' | sed '$ s/.$//'", "unit": "%"}
+      ]
+    }
+  ]
+}

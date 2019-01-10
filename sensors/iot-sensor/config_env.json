@@ -1,0 +1,16 @@
+{
+    "mqtt": {
+        "host": "${MQTT_BROKER_HOST}",
+        "port": ${MQTT_BROKER_PORT},
+        "topic": "${MQTT_BROKER_TOPIC}"
+    },
+    
+    "sensors": {
+        "Sensor 1": {
+            "id": "${SENSOR_ID}-1"
+        },
+        "Sensor 2": {
+            "id": "${SENSOR_ID}-2"
+        }
+    }
+}
